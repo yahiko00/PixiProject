@@ -7,17 +7,8 @@ if (!debug) {
 }
 
 const tape = require("tape");
-const random = require("./../debug/module");
 
-tape("Test random()", t => {
-    t.plan(103);
+tape("Test", t => {
+    t.plan(0);
 
-    t.equal(random(0, 0), 0);
-    t.equal(random(1, 1), 1);
-    t.equal(random(-1, -1), -1);
-
-    for (let i = 0; i < 100; i++) {
-        let roll = random(1, 6);
-        t.ok(roll >= 1 && roll <= 6, "Roll: " + roll.toString());
-    } // for i
 });

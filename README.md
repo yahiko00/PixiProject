@@ -1,6 +1,6 @@
-# TS Project #
+# Pixi.js Project #
 
-A generic frontend project boiler plate in **TypeScript** with **source map** support.
+A generic frontend **Pixi.js** project boiler plate in **TypeScript** with **source map** support.
 
 Main features:
 
@@ -20,13 +20,14 @@ Main dependencies:
 * **Code Minifier**: [Uglify](https://github.com/mishoo/UglifyJS2)
 * **HTTP Server**: [BrowserSync](https://github.com/Browsersync/browsersync.github.io)
 * **Unit Test Runner**: [Tape](https://github.com/substack/tape)
+* **Pixi.js**: [Pixi.js](http://www.pixijs.com/)
 
 
 ## Installation ##
 
 Node, TypeScript and TSLint should be installed globally.
 
-	$> git clone https://github.com/yahiko00/TSProject.git <new folder>
+	$> git clone https://github.com/yahiko00/PixiProject.git <new folder>
 	$> cd <new folder>
 	$> git init
 	$> npm install
@@ -55,4 +56,4 @@ yahiko
 
 ## Licence ##
 
-ISC
+MIT
