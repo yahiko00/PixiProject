@@ -26,7 +26,8 @@ const engine = new Engine(params.canvasW, params.canvasH);
 const fpsMeter = {
     nbFrames: 0,
     framerate: 0.0,
-    elapsed: Date.now(),
+    elapsed: performance.now(),
+    refresh: 500,
     domElement: document.createElement("div")
 }
 
@@ -59,12 +60,12 @@ function create() {
 
 function update() {
     requestAnimationFrame(update);
-    let now = Date.now();
+    let now = performance.now();
     let frameTime = now - fpsMeter.elapsed;
 
     fpsMeter.nbFrames++;
-    if (frameTime >= 1000) {
-        let framerate = 1000 * fpsMeter.nbFrames / frameTime;
+    if (frameTime >= fpsMeter.refresh) {
+        let framerate = fpsMeter.refresh * fpsMeter.nbFrames / frameTime;
         fpsMeter.domElement.innerHTML = "FPS: " + framerate.toFixed(2).toString();
         fpsMeter.elapsed = now;
         fpsMeter.nbFrames = 0;
