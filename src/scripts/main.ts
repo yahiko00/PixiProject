@@ -65,7 +65,7 @@ function update() {
 
     fpsMeter.nbFrames++;
     if (frameTime >= fpsMeter.refresh) {
-        let framerate = fpsMeter.refresh * fpsMeter.nbFrames / frameTime;
+        let framerate = 1000 * fpsMeter.nbFrames / frameTime;
         fpsMeter.domElement.innerHTML = "FPS: " + framerate.toFixed(2).toString();
         fpsMeter.elapsed = now;
         fpsMeter.nbFrames = 0;

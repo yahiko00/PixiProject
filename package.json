@@ -60,6 +60,7 @@
       "tgtCss": "css/",
       "tests": "./tests/"
     },
+    "main": "main.js",
     "bundle": "bundle.js",
     "port": 8080
   }
