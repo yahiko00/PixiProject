@@ -11,17 +11,28 @@ const params = {
 }
 
 class Engine {
+    public container: HTMLElement;
     public loader: PIXI.loaders.Loader;
     public renderer: PIXI.SystemRenderer;
     public stage: PIXI.Container;
+    public graphics: PIXI.Graphics;
+    public fps: int;
+    public elapsed: float;
 
-    constructor(width: int, height: int) {
+    constructor(width: int, height: int, containerId?: string, fps = 60) {
         this.loader = PIXI.loader;
         this.renderer = PIXI.autoDetectRenderer(width, height, { "antialias": true });
+        this.stage = new PIXI.Container();
+        this.graphics = new PIXI.Graphics();
+        this.fps = fps;
+        this.elapsed = performance.now();
+
+        this.container = containerId ? document.getElementById(containerId) || document.body : document.body;
+        this.container.appendChild(this.renderer.view);
     } // constructor
 } // Engine
 
-const engine = new Engine(params.canvasW, params.canvasH);
+const engine = new Engine(params.canvasW, params.canvasH, "game");
 
 const fpsMeter = {
     nbFrames: 0,
@@ -35,46 +46,51 @@ const fpsMeter = {
 // === STATES ===
 // ==============
 
+window.onload = load;
+
 function load() {
     create();
 } // load
 
 function create() {
-    /* Main Container */
-    let container = document.getElementById("game") || document.body;
-    container.appendChild(engine.renderer.view);
+    /* Create Game Objects */
 
     /* FPS */
     fpsMeter.domElement.style.position = "fixed";
     fpsMeter.domElement.style.left = "0px";
     fpsMeter.domElement.style.bottom = "0px";
-    fpsMeter.domElement.style.color = "#000000";
+    fpsMeter.domElement.style.color = "#00ff00";
     fpsMeter.domElement.style.zIndex = "10";
     fpsMeter.domElement.style.fontFamily = "monospace";
-    container.appendChild(fpsMeter.domElement);
+    engine.container.appendChild(fpsMeter.domElement);
 
     engine.stage = new PIXI.Container();
 
-    update();
+    setInterval(update, 1000.0 / engine.fps);
+    render();
 } // create
 
 function update() {
-    requestAnimationFrame(update);
+    let now = performance.now();
+    let frameTime = now - engine.elapsed;
+    let timeRatio = frameTime * engine.fps * 0.001;
+
+    engine.elapsed = now;
+} // update
+
+function render() {
+    requestAnimationFrame(render);
     let now = performance.now();
     let frameTime = now - fpsMeter.elapsed;
 
+    engine.renderer.render(engine.stage);
+
+    /* FPS Meter */
     fpsMeter.nbFrames++;
     if (frameTime >= fpsMeter.refresh) {
-        let framerate = 1000 * fpsMeter.nbFrames / frameTime;
+        let framerate = 1000.0 * fpsMeter.nbFrames / frameTime;
         fpsMeter.domElement.innerHTML = "FPS: " + framerate.toFixed(2).toString();
         fpsMeter.elapsed = now;
         fpsMeter.nbFrames = 0;
     }
-    render();
-} // update
-
-function render() {
-    engine.renderer.render(engine.stage);
 } // render
-
-window.onload = load;
