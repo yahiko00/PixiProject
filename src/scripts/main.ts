@@ -64,8 +64,6 @@ function create() {
     fpsMeter.domElement.style.fontFamily = "monospace";
     engine.container.appendChild(fpsMeter.domElement);
 
-    engine.stage = new PIXI.Container();
-
     setInterval(update, 1000.0 / engine.fps);
     render();
 } // create
