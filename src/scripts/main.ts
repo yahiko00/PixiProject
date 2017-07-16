@@ -17,7 +17,7 @@ class Engine {
     public stage: PIXI.Container;
     public graphics: PIXI.Graphics;
     public fps: int;
-    public elapsed: float;
+    public elapsed: double;
 
     constructor(width: int, height: int, containerId?: string, fps = 60) {
         this.loader = PIXI.loader;
