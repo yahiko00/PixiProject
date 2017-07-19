@@ -30,6 +30,7 @@
     "gulp-util": "^3.0.8",
     "merge2": "^1.1.0",
     "pixi-typescript": "pixijs/pixi-typescript#v4.x",
+    "pixi.js": "^4.5.3",
     "run-sequence": "^2.0.0",
     "tape": "^4.7.0",
     "through2": "^2.0.3",
@@ -39,9 +40,7 @@
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^8.0.2"
   },
-  "dependencies": {
-    "pixi.js": "^4.5.3"
-  },
+  "dependencies": {},
   "settings": {
     "debug": true,
     "tsconfig": {
