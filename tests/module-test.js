@@ -1,10 +1,14 @@
-'use strict';
+"use strict";
+const settings = require("./../package.json").settings;
+const debug = settings.debug === true;
+if (!debug) {
+    console.log("Need to be in a debug environnment to run tests.");
+    return;
+}
 
-const assert = require('assert');
-const add = (a, b) => a + b; // Just as an example. Better to "require"
+const tape = require("tape");
 
-describe('Tests', () => {
-  it('should add correctly', () => {
-    assert.equal(add(1, 1), 2);
-  });
+tape("Test", t => {
+    t.plan(0);
+
 });
