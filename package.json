@@ -1,65 +1,31 @@
 {
   "name": "pixi-project",
-  "version": "0.1.0",
-  "description": "Pixi.js project boiler plate using TypeScript, Gulp, Browserify, Uglify and Tape",
+  "version": "0.2.0",
+  "description": "Pixi.js project boiler plate using TypeScript, Webpack and Mocha",
   "scripts": {
-    "build": "gulp bundle && gulp copy",
-    "clean": "gulp clean",
-    "clean:all": "gulp clean:all",
-    "compile": "gulp compile",
-    "rebuild": "gulp clean && gulp bundle && gulp copy",
-    "serve": "gulp serve",
-    "test": "gulp test",
-    "watch": "gulp watch",
-    "watchRefresh": "gulp watchRefresh"
+    "build": "cross-env NODE_ENV=production webpack",
+    "serve": "webpack-dev-server --hot",
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yahiko00/PixiProject.git"
   },
   "author": "Yahiko <yahiko.ninja@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.18.12",
-    "browserify": "^14.4.0",
-    "browserify-incremental": "^3.1.1",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-changed": "^3.1.0",
-    "gulp-if": "^2.0.2",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-tape": "^0.0.9",
-    "gulp-typescript": "^3.2.0",
-    "gulp-uglify-es": "^0.1.9",
-    "gulp-util": "^3.0.8",
-    "merge2": "^1.1.0",
-    "pixi-typescript": "pixijs/pixi-typescript#v4.x",
-    "pixi.js": "^4.5.3",
-    "run-sequence": "^2.0.0",
-    "tape": "^4.7.0",
-    "through2": "^2.0.3",
-    "typescript": "^2.4.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "yargs": "^8.0.2"
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.2",
+    "mocha": "^7.1.1",
+    "mocha-loader": "^5.0.0",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
-  "dependencies": {},
-  "settings": {
-    "debug": true,
-    "tsconfig": {
-      "debug": "tsconfig.debug.json",
-      "release": "tsconfig.json"
-    },
-    "paths": {
-      "src": "./src/",
-      "srcScripts": "./src/scripts/",
-      "srcImages": "./src/images/",
-      "srcCss": "./src/css/",
-      "release": "./dist/",
-      "debug": "./debug/",
-      "tgtScripts": "./",
-      "tgtImages": "images/",
-      "tgtCss": "css/",
-      "tests": "./tests/"
-    },
-    "main": "main.js",
-    "bundle": "bundle.js",
-    "port": 8080
+  "dependencies": {
+    "pixi.js": "^5.2.1"
   }
 }

@@ -1,7 +1,15 @@
 body {
-	background-color: #e0e878;
-	color: #000000;
+	background-color: #ffffff;
 	font-family: "Century Gothic", helvetica, arial, sans-serif;
 	font-size: 1.4em;
 	line-height: 1.5;
+}
+
+.fps {
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	color: #0000ff;
+	z-index: 10;
+	font-family: monospace;
 }
